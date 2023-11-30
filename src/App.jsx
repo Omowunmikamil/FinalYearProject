@@ -1,19 +1,21 @@
-function App() {
-  /* Adding intaractin to the rating slide */
-  /* const [ratei, setRatei] = useState(0);
+import { useState } from "react";
 
-  const handleSubmit = () => {
-    if (ratei) {
-      setIsSubmit(true);
-    }
-  }; */
+function App() {
+  
+  //fix the on toggle when rating button is clicked
+  const [isActive, setIsActive] = useState(null);
+
+  const handleClick = (idx) => {
+    setIsActive(idx);
+  }
+
 
   return (
     /* Rating slide */
     <div className="w-96 h-96 whitespace-nowrap overflow-hidden">
       <div className="inline-block break-words align-top whitespace-normal">
         <div 
-          className='w-96 h-96 p-5       rounded-3xl text-white flex flex-col gap-8'
+          className='w-96 h-96 p-5 rounded-3xl text-white flex flex-col gap-8'
           style={{ 
             backgroundColor: '#1a202c'
           }}
@@ -31,13 +33,15 @@ function App() {
           <div className="grid grid-cols-5 gap-5">
             {[1, 2, 3, 4, 5].map((i) => {
               return (
-                <div 
-                  key={i} className="grid place-content-center text-gray-400 h-12 w-12 rounded-full bg-zinc-900 cursor-pointer   hover:bg-white hover:text-orange-500 transition-all ${ratei >= i ? 'bg-white text-orange-500' : 'text-gray-400'`}"
-                  /* onClick={() => setRatei (i)} */
-                > 
-                  {i}
-                </div>
-              );
+					<div
+						key={i}
+						className={`grid place-content-center text-gray-400 h-12 w-12 rounded-full bg-zinc-900 cursor-pointer   hover:bg-white hover:text-orange-500 transition-all
+                  ${isActive === i ? "bg-red-500" : ""}`}
+						    onClick={() => handleClick(i)}
+					>
+						{i}
+					</div>
+				);
             })}
           </div>
           <button className="w-full text-2l bg-orange-500 rounded-3xl py-2 hover:bg-white hover:text-orange-500 transition-all" /* onClick={handleSubmit} */>
