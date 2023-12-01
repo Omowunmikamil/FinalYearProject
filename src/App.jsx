@@ -42,7 +42,8 @@ function App() {
 									key={i}
 									className={`grid place-content-center text-gray-400 h-12 w-12 rounded-full bg-zinc-900 cursor-pointer   hover:bg-white hover:text-orange-500 transition-all
                   ${
-						isActive === i
+										isActive === i
+										// If when clicked and bg-color does not change, change the color on next line
 							? "bg-yellow-500 hover:bg-yellow-500 text-white hover:text-white"
 							: ""
 					}`}
